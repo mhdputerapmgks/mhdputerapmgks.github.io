@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M Putera Pamungkas — Portfolio Wireframe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─────────────────────────────────────── */
+:root {
+  --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
+  --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
+  --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
+  --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
+  --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
+  --text-2xl:  clamp(2rem,     1.2rem  + 2.5vw,  3.5rem);
+  --text-3xl:  clamp(2.5rem,   1rem    + 4vw,    5rem);
+  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem;
+  --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
+  --space-12: 3rem; --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
+  --radius-sm:.375rem; --radius-md:.5rem; --radius-lg:.75rem; --radius-xl:1rem;
+  --radius-full:9999px;
+  --bg:         #0f0f0f;
+  --surface:    #161616;
+  --surface-2:  #1c1c1c;
+  --surface-3:  #222222;
+  --border:     rgba(255,255,255,0.08);
+  --border-md:  rgba(255,255,255,0.12);
+  --text:       #e8e8e8;
+  --text-muted: #888;
+  --text-faint: #555;
+  --accent:     #c8f542;
+  --accent-dim: rgba(200,245,66,0.12);
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --transition: 200ms cubic-bezier(0.16,1,0.3,1);
+  --content: 1120px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:var(--text-base);line-height:1.65;min-height:100dvh}
+img{display:block;max-width:100%;height:auto}
+button{cursor:pointer;background:none;border:none;font:inherit;color:inherit}
+a{color:inherit;text-decoration:none}
+
+/* ─── NAV ─────────────────────────────────────────── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) var(--space-8);border-bottom:1px solid var(--border);background:rgba(15,15,15,0.85);backdrop-filter:blur(12px)}
+.nav-logo{font-family:var(--font-display);font-size:var(--text-sm);font-weight:700;letter-spacing:.04em;color:var(--accent)}
+.nav-links{display:flex;gap:var(--space-6)}
+.nav-links a{font-size:var(--text-sm);color:var(--text-muted);transition:color var(--transition)}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{font-size:var(--text-sm);font-weight:500;padding:var(--space-2) var(--space-4);border:1px solid var(--border-md);border-radius:var(--radius-full);transition:all var(--transition)}
+.nav-cta:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ─── SECTIONS ────────────────────────────────────── */
+section{padding:clamp(var(--space-16),8vw,var(--space-24)) var(--space-6)}
+.container{max-width:var(--content);margin-inline:auto}
+
+/* ─── HERO ────────────────────────────────────────── */
+.hero{min-height:100dvh;display:flex;flex-direction:column;justify-content:flex-end;padding-top:80px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 65% 40%, rgba(200,245,66,0.04) 0%, transparent 65%),radial-gradient(ellipse 50% 50% at 30% 70%, rgba(100,100,200,0.04) 0%, transparent 60%)}
+.hero-grid-overlay{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px, transparent 1px),linear-gradient(90deg, var(--border) 1px, transparent 1px);background-size:80px 80px;opacity:0.4}
+.hero-content{position:relative;z-index:2;padding-bottom:var(--space-20)}
+.hero-tag{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-xs);font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(200,245,66,0.25);padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);margin-bottom:var(--space-6)}
+.hero-name{font-family:var(--font-display);font-size:var(--text-3xl);font-weight:800;line-height:1.0;letter-spacing:-.02em;margin-bottom:var(--space-6);color:#fff}
+.hero-name span{color:var(--accent)}
+.hero-desc{max-width:52ch;font-size:var(--text-lg);color:var(--text-muted);line-height:1.6;margin-bottom:var(--space-10)}
+.hero-meta{display:flex;align-items:center;gap:var(--space-8);flex-wrap:wrap}
+.hero-stat{display:flex;flex-direction:column;gap:2px}
+.hero-stat-num{font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:#fff}
+.hero-stat-label{font-size:var(--text-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em}
+.hero-divider{width:1px;height:40px;background:var(--border-md)}
+.hero-cta{display:flex;gap:var(--space-4);margin-left:auto;align-items:center}
+.btn-primary{display:inline-flex;align-items:center;gap:var(--space-2);background:var(--accent);color:#0f0f0f;font-weight:600;font-size:var(--text-sm);padding:var(--space-3) var(--space-6);border-radius:var(--radius-full);transition:all var(--transition)}
+.btn-primary:hover{background:#d4ff55;transform:translateY(-1px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:var(--space-2);color:var(--text-muted);font-size:var(--text-sm);padding:var(--space-3) var(--space-6);border:1px solid var(--border-md);border-radius:var(--radius-full);transition:all var(--transition)}
+.btn-ghost:hover{color:var(--text);border-color:rgba(255,255,255,0.25)}
+
+/* ─── ABOUT ───────────────────────────────────────── */
+.about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:var(--space-16);align-items:start}
+.about-photo-wrap{position:relative}
+.about-photo{width:100%;aspect-ratio:3/4;background:var(--surface-2);border-radius:var(--radius-xl);border:1px solid var(--border);object-fit:cover;display:flex;align-items:center;justify-content:center;color:var(--text-faint);font-size:var(--text-sm)}
+.about-photo-label{position:absolute;bottom:var(--space-4);left:var(--space-4);background:rgba(15,15,15,0.8);backdrop-filter:blur(8px);border:1px solid var(--border);padding:var(--space-2) var(--space-3);border-radius:var(--radius-md);font-size:var(--text-xs);color:var(--text-muted)}
+.section-label{font-size:var(--text-xs);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:var(--space-4)}
+.section-title{font-family:var(--font-display);font-size:var(--text-2xl);font-weight:700;line-height:1.1;color:#fff;margin-bottom:var(--space-6)}
+.section-title em{font-style:normal;color:var(--accent)}
+.about-bio{font-size:var(--text-base);color:var(--text-muted);line-height:1.75;margin-bottom:var(--space-8)}
+.tool-chips{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-8)}
+.chip{display:inline-flex;align-items:center;gap:var(--space-1);font-size:var(--text-xs);font-weight:500;padding:var(--space-1) var(--space-3);background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-full);color:var(--text-muted);transition:all var(--transition)}
+.chip:hover,.chip.active{border-color:rgba(200,245,66,0.35);color:var(--accent);background:var(--accent-dim)}
+
+/* ─── EXPERIENCE TIMELINE ─────────────────────────── */
+.timeline{display:flex;flex-direction:column;gap:0}
+.timeline-item{display:grid;grid-template-columns:120px 1fr;gap:var(--space-6);padding:var(--space-6) 0;border-bottom:1px solid var(--border);position:relative}
+.timeline-item:last-child{border-bottom:none}
+.timeline-year{font-family:var(--font-display);font-size:var(--text-xs);font-weight:600;color:var(--text-faint);letter-spacing:.06em;padding-top:4px}
+.timeline-role{font-size:var(--text-base);font-weight:600;color:#fff;margin-bottom:var(--space-1)}
+.timeline-company{font-size:var(--text-sm);color:var(--accent);margin-bottom:var(--space-3)}
+.timeline-desc{font-size:var(--text-sm);color:var(--text-muted);line-height:1.65}
+
+/* ─── SECTION HEADING CENTER ──────────────────────── */
+.section-head{margin-bottom:clamp(var(--space-10),5vw,var(--space-16))}
+.section-head.center{text-align:center}
+.section-head.center .section-label{justify-content:center;display:flex}
+.section-head p{font-size:var(--text-base);color:var(--text-muted);max-width:55ch;margin-top:var(--space-3)}
+.section-head.center p{margin-inline:auto}
+
+/* ─── PROJECT GRID ────────────────────────────────── */
+.project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4)}
+.project-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);overflow:hidden;cursor:pointer;transition:all var(--transition);position:relative}
+.project-card:hover{border-color:var(--border-md);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.4)}
+.project-card.featured{grid-column:span 2}
+.project-card-img{aspect-ratio:16/9;background:var(--surface-2);display:flex;align-items:center;justify-content:center;color:var(--text-faint);font-size:var(--text-sm);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.project-card.featured .project-card-img{aspect-ratio:21/9}
+.project-card-img-bg{position:absolute;inset:0;opacity:0.15;background:linear-gradient(135deg, var(--accent), transparent)}
+.project-card-body{padding:var(--space-5) var(--space-6)}
+.project-tag{display:inline-flex;font-size:var(--text-xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:var(--space-3)}
+.project-title{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:#fff;margin-bottom:var(--space-2)}
+.project-desc{font-size:var(--text-sm);color:var(--text-muted);line-height:1.6;margin-bottom:var(--space-4)}
+.project-meta{display:flex;gap:var(--space-3);flex-wrap:wrap}
+.project-badge{font-size:var(--text-xs);padding:2px var(--space-2);background:var(--surface-3);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-faint)}
+.project-arrow{position:absolute;top:var(--space-5);right:var(--space-5);width:32px;height:32px;border-radius:var(--radius-full);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text-faint);transition:all var(--transition)}
+.project-card:hover .project-arrow{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
+
+/* ─── PROJECT DETAIL MODAL ────────────────────────── */
+.modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);display:flex;align-items:flex-start;justify-content:center;padding:var(--space-8) var(--space-4);overflow-y:auto;opacity:0;pointer-events:none;transition:opacity var(--transition)}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--surface);border:1px solid var(--border-md);border-radius:var(--radius-xl);max-width:760px;width:100%;padding:clamp(var(--space-8),5vw,var(--space-12));position:relative;transform:translateY(16px);transition:transform var(--transition)}
+.modal-overlay.open .modal{transform:translateY(0)}
+.modal-close{position:absolute;top:var(--space-5);right:var(--space-5);width:36px;height:36px;border-radius:var(--radius-full);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:18px;transition:all var(--transition)}
+.modal-close:hover{color:var(--text);border-color:var(--border-md)}
+.modal-tag{font-size:var(--text-xs);font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:var(--space-3)}
+.modal-title{font-family:var(--font-display);font-size:var(--text-2xl);font-weight:700;color:#fff;line-height:1.1;margin-bottom:var(--space-6)}
+.modal-divider{height:1px;background:var(--border);margin:var(--space-6) 0}
+.modal-meta-row{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);margin-bottom:var(--space-8)}
+.modal-meta-item label{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.08em;color:var(--text-faint);display:block;margin-bottom:4px}
+.modal-meta-item span{font-size:var(--text-sm);font-weight:500;color:var(--text)}
+.modal-section-h{font-family:var(--font-display);font-size:var(--text-base);font-weight:700;color:#fff;margin-bottom:var(--space-3);margin-top:var(--space-6)}
+.modal-section-h:first-of-type{margin-top:0}
+.modal p{font-size:var(--text-base);color:var(--text-muted);line-height:1.75;margin-bottom:var(--space-4)}
+.modal-deliverables{list-style:none;display:flex;flex-direction:column;gap:var(--space-2)}
+.modal-deliverables li{display:flex;align-items:flex-start;gap:var(--space-3);font-size:var(--text-sm);color:var(--text-muted);line-height:1.6}
+.modal-deliverables li::before{content:"→";color:var(--accent);flex-shrink:0;margin-top:2px;font-size:var(--text-sm)}
+.modal-img-placeholder{width:100%;aspect-ratio:16/9;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;color:var(--text-faint);font-size:var(--text-sm);margin-bottom:var(--space-4)}
+
+/* ─── SKILLS ──────────────────────────────────────── */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)}
+.skill-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);padding:var(--space-6)}
+.skill-icon{font-size:1.5rem;margin-bottom:var(--space-3)}
+.skill-title{font-family:var(--font-display);font-size:var(--text-base);font-weight:700;color:#fff;margin-bottom:var(--space-3)}
+.skill-list{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+
+/* ─── CERTS ───────────────────────────────────────── */
+.cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)}
+.cert-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);padding:var(--space-6)}
+.cert-issuer{font-size:var(--text-xs);color:var(--text-faint);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-2)}
+.cert-name{font-family:var(--font-display);font-size:var(--text-base);font-weight:700;color:#fff;margin-bottom:var(--space-2)}
+.cert-date{font-size:var(--text-xs);color:var(--accent)}
+
+/* ─── CONTACT ─────────────────────────────────────── */
+.contact-band{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);padding:clamp(var(--space-10),6vw,var(--space-20));text-align:center}
+.contact-band .section-title{margin-bottom:var(--space-4)}
+.contact-band p{color:var(--text-muted);max-width:48ch;margin:0 auto var(--space-8)}
+.contact-links{display:flex;justify-content:center;gap:var(--space-4);flex-wrap:wrap}
+.contact-link{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--text-muted);padding:var(--space-3) var(--space-5);border:1px solid var(--border);border-radius:var(--radius-full);transition:all var(--transition)}
+.contact-link:hover{color:var(--accent);border-color:rgba(200,245,66,0.35);background:var(--accent-dim)}
+
+/* ─── FOOTER ──────────────────────────────────────── */
+footer{border-top:1px solid var(--border);padding:var(--space-8) var(--space-6);display:flex;justify-content:space-between;align-items:center;font-size:var(--text-xs);color:var(--text-faint)}
+
+/* ─── WIREFRAME NOTICE ────────────────────────────── */
+.wf-notice{background:linear-gradient(135deg,rgba(200,245,66,0.08),rgba(200,245,66,0.03));border:1px solid rgba(200,245,66,0.2);border-radius:var(--radius-lg);padding:var(--space-3) var(--space-5);font-size:var(--text-xs);color:var(--accent);display:flex;align-items:center;gap:var(--space-2);margin-bottom:var(--space-12)}
+.wf-dot{width:6px;height:6px;border-radius:var(--radius-full);background:var(--accent);flex-shrink:0;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* ─── SCROLL REVEAL ───────────────────────────────── */
+.reveal{opacity:1}
+@supports(animation-timeline:scroll()){
+  .reveal{opacity:0;animation:rev linear both;animation-timeline:view();animation-range:entry 0% entry 80%}
+  @keyframes rev{to{opacity:1}}
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────── */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .about-grid{grid-template-columns:1fr}
+  .project-grid{grid-template-columns:1fr}
+  .project-card.featured{grid-column:span 1}
+  .project-card.featured .project-card-img{aspect-ratio:16/9}
+  .skills-grid,.cert-grid{grid-template-columns:1fr}
+  .modal-meta-row{grid-template-columns:1fr 1fr}
+  .timeline-item{grid-template-columns:1fr;gap:var(--space-2)}
+  .hero-cta{margin-left:0;width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">MPP</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="container hero-content">
+    <div class="wf-notice">
+      <div class="wf-dot"></div>
+      Wireframe &amp; Text Template — M Putera Pamungkas Portfolio · Semua teks di bawah siap dipakai di Figma/Canva
+    </div>
+    <div class="hero-tag">📍 Bandung, Indonesia &nbsp;·&nbsp; Available for Projects</div>
+    <h1 class="hero-name">M Putera<br><span>Pamungkas</span></h1>
+    <p class="hero-desc">Graphic Designer with 7+ years of experience crafting visual identities, social media campaigns, and brand systems that help brands connect with their audiences.</p>
+    <div class="hero-meta">
+      <div class="hero-stat">
+        <span class="hero-stat-num">7+</span>
+        <span class="hero-stat-label">Years Exp.</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">3</span>
+        <span class="hero-stat-label">Companies</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">10+</span>
+        <span class="hero-stat-label">Brand Projects</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary">See My Work ↓</a>
+        <a href="#contact" class="btn-ghost">Contact Me</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-photo-wrap">
+        <div class="about-photo" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity=".3"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <span style="font-size:.7rem;opacity:.4">Profile Photo</span>
+        </div>
+        <div class="about-photo-label">mhdputerapmgks@gmail.com</div>
+      </div>
+      <div>
+        <div class="section-label">About Me</div>
+        <h2 class="section-title">Turning brand messages into <em>compelling visuals</em></h2>
+        <p class="about-bio">
+          Graphic designer based in Bandung with 7+ years of experience working with corporations, agencies, and growing startups. My work spans social media design, brand identity systems, marketing collateral, and UI for landing pages — always with a focus on clarity, consistency, and visual impact.<br><br>
+          I believe great design is not just about looking good — it is about communicating the right message to the right audience. Whether building a brand from scratch or refreshing an existing one, I bring both aesthetic sensibility and strategic thinking to every project.
+        </p>
+        <div class="section-label" style="margin-bottom:var(--space-3)">Tools &amp; Software</div>
+        <div class="tool-chips" style="margin-bottom:var(--space-8)">
+          <span class="chip active">Adobe Photoshop</span>
+          <span class="chip active">Figma</span>
+          <span class="chip active">Affinity Designer</span>
+          <span class="chip active">Affinity Photo</span>
+          <span class="chip">Canva</span>
+          <span class="chip">WordPress</span>
+          <span class="chip">Illustrator</span>
+        </div>
+        <div class="section-label" style="margin-bottom:var(--space-4)">Experience</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">2020–2025</div>
+            <div>
+              <div class="timeline-role">Graphic Designer</div>
+              <div class="timeline-company">PT Exa Profit Optima · Full Time</div>
+              <div class="timeline-desc">Social media design, marketing kits, WordPress website development, and landing page UI design for product launches and campaigns.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2022–2023</div>
+            <div>
+              <div class="timeline-role">Freelance Remote Graphic Designer</div>
+              <div class="timeline-company">Sabi Solution · Freelance</div>
+              <div class="timeline-desc">Brand identity design, comprehensive brand guidelines, social media templates, and logo creation for multiple clients.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2019–2020</div>
+            <div>
+              <div class="timeline-role">Graphic Designer</div>
+              <div class="timeline-company">Lariz Hospitality · Full Time</div>
+              <div class="timeline-desc">Developed social media design assets and daily marketing content for hospitality brand campaigns.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2019–Now</div>
+            <div>
+              <div class="timeline-role">Freelance Graphic Designer</div>
+              <div class="timeline-company">Ken Design Studio · Freelance</div>
+              <div class="timeline-desc">Independent freelance projects across branding, social media, and marketing design for various clients.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">Selected Work</div>
+      <h2 class="section-title">Projects &amp; <em>Case Studies</em></h2>
+      <p>A selection of brand identity, social media, and marketing design projects from 2019 to present.</p>
+    </div>
+    <div class="project-grid">
+
+      <!-- TETANGGAKU — Featured -->
+      <div class="project-card featured reveal" onclick="openModal('tetanggaku')">
+        <div class="project-card-img">
+          <div class="project-card-img-bg"></div>
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity=".2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span style="position:absolute;bottom:16px;left:20px;font-size:.75rem;opacity:.4">Visual Mockup Area</span>
+        </div>
+        <div class="project-card-body">
+          <span class="project-tag">Brand Identity · Social Media</span>
+          <h3 class="project-title">Tetanggaku</h3>
+          <p class="project-desc">Developed a complete brand identity system for a local on-demand service startup — from logo philosophy to social media templates. The goal was a visual language that communicates trust and community spirit.</p>
+          <div class="project-meta">
+            <span class="project-badge">Brand Guideline</span>
+            <span class="project-badge">Logo Design</span>
+            <span class="project-badge">Social Media</span>
+            <span class="project-badge">Sabi Solution</span>
+          </div>
+        </div>
+        <div class="project-arrow">↗</div>
+      </div>
+
+      <!-- SPARK BLOSSOM -->
+      <div class="project-card reveal" onclick="openModal('sparkblossom')">
+        <div class="project-card-img" style="background:linear-gradient(135deg,#1a0a2e,#16161e)">
+          <div class="project-card-img-bg" style="background:linear-gradient(135deg,#ff6b9d,transparent)"></div>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity=".2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+        </div>
+        <div class="project-card-body">
+          <span class="project-tag">Brand Identity</span>
+          <h3 class="project-title">Spark Blossom</h3>
+          <p class="project-desc">K-Pop merchandise brand identity — logo, brand guideline, and social media content system targeting a youthful, trend-driven audience.</p>
+          <div class="project-meta">
+            <span class="project-badge">Logo</span><span class="project-badge">Brand Guide</span><span class="project-badge">Social Media</span>
+          </div>
+        </div>
+        <div class="project-arrow">↗</div>
+      </div>
+
+      <!-- GORDON MAX -->
+      <div class="project-card reveal" onclick="openModal('gordonmax')">
+        <div class="project-card-img" style="background:linear-gradient(135deg,#0d0d0d,#1a1510)">
+          <div class="project-card-img-bg" style="background:linear-gradient(135deg,#d4af37,transparent)"></div>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity=".2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        </div>
+        <div class="project-card-body">
+          <span class="project-tag">Social Media · UI Design</span>
+          <h3 class="project-title">Gordon Max</h3>
+          <p class="project-desc">Premium diamond jewelry retailer. Social media content, promotional materials, and website UI — translating elegance into a seamless digital experience.</p>
+          <div class="project-meta">
+            <span class="project-badge">Social Media</span><span class="project-badge">UI Design</span><span class="project-badge">Marketing</span>
+          </div>
+        </div>
+        <div class="project-arrow">↗</div>
+      </div>
+
+      <!-- MCDONAT -->
+      <div class="project-card reveal" onclick="openModal('mcdonat')">
+        <div class="project-card-img" style="background:linear-gradient(135deg,#1a0800,#1a1000)">
+          <div class="project-card-img-bg" style="background:linear-gradient(135deg,#ff6b00,transparent)"></div>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity=".2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/></svg>
+        </div>
+        <div class="project-card-body">
+          <span class="project-tag">Social Media Design</span>
+          <h3 class="project-title">McDonat</h3>
+          <p class="project-desc">Social media refresh for a Bandung-based donut brand. Bold colors, playful layouts, and vibrant visuals designed to make the product feel irresistible.</p>
+          <div class="project-meta">
+            <span class="project-badge">Social Media</span><span class="project-badge">Art Direction</span><span class="project-badge">Bandung Brand</span>
+          </div>
+        </div>
+        <div class="project-arrow">↗</div>
+      </div>
+
+      <!-- BERLANJA -->
+      <div class="project-card reveal" onclick="openModal('berlanja')">
+        <div class="project-card-img" style="background:linear-gradient(135deg,#061a0a,#0a1a10)">
+          <div class="project-card-img-bg" style="background:linear-gradient(135deg,#4caf50,transparent)"></div>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity=".2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </div>
+        <div class="project-card-body">
+          <span class="project-tag">Marketing Design</span>
+          <h3 class="project-title">Berlanja</h3>
+          <p class="project-desc">Marketing kits, social media content, and banner design for a retail brand focused on herbal health products and fashion items.</p>
+          <div class="project-meta">
+            <span class="project-badge">Marketing Kit</span><span class="project-badge">Banner</span><span class="project-badge">Social Media</span>
+          </div>
+        </div>
+        <div class="project-arrow">↗</div>
+      </div>
+
+      <!-- ERLYSSA -->
+      <div class="project-card reveal" onclick="openModal('erlyssa')">
+        <div class="project-card-img" style="background:linear-gradient(135deg,#1a1020,#0d0a14)">
+          <div class="project-card-img-bg" style="background:linear-gradient(135deg,#9c6db3,transparent)"></div>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity=".2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <div class="project-card-body">
+          <span class="project-tag">Social Media · E-Commerce</span>
+          <h3 class="project-title">Erlyssa</h3>
+          <p class="project-desc">Aesthetic social media and marketplace visuals for a modest fashion brand — creating elegant, conversion-focused content aligned with the brand's premium identity.</p>
+          <div class="project-meta">
+            <span class="project-badge">Fashion Brand</span><span class="project-badge">E-Commerce</span><span class="project-badge">Social Media</span>
+          </div>
+        </div>
+        <div class="project-arrow">↗</div>
+      </div>
+
+      <!-- BEAUTETOX -->
+      <div class="project-card reveal" onclick="openModal('beautetox')">
+        <div class="project-card-img" style="background:linear-gradient(135deg,#1a0812,#0d0610)">
+          <div class="project-card-img-bg" style="background:linear-gradient(135deg,#ff80ab,transparent)"></div>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity=".2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        </div>
+        <div class="project-card-body">
+          <span class="project-tag">E-Commerce · Shopee</span>
+          <h3 class="project-title">Beautetox</h3>
+          <p class="project-desc">Product display images and Shopee store decoration for a beauty brand — improving digital shelf presence and driving customer engagement and sales.</p>
+          <div class="project-meta">
+            <span class="project-badge">Product Display</span><span class="project-badge">Shopee Deco</span><span class="project-badge">Beauty Brand</span>
+          </div>
+        </div>
+        <div class="project-arrow">↗</div>
+      </div>
+
+    </div><!-- /project-grid -->
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">Capabilities</div>
+      <h2 class="section-title">Skills &amp; <em>Expertise</em></h2>
+      <p>A blend of technical tools and creative specializations built over 7 years of professional design work.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-icon">🎨</div>
+        <div class="skill-title">Brand Identity</div>
+        <div class="skill-list">
+          <span class="chip">Logo Design</span><span class="chip">Brand Guideline</span><span class="chip">Typography Systems</span><span class="chip">Color Palette</span><span class="chip">Brand Voice</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">📱</div>
+        <div class="skill-title">Social Media Design</div>
+        <div class="skill-list">
+          <span class="chip">Feed Design</span><span class="chip">Stories</span><span class="chip">Reels Cover</span><span class="chip">Campaign Visuals</span><span class="chip">Content Template</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🛍️</div>
+        <div class="skill-title">Marketing & E-Commerce</div>
+        <div class="skill-list">
+          <span class="chip">Marketing Kit</span><span class="chip">Banner Design</span><span class="chip">Shopee Deco</span><span class="chip">Product Display</span><span class="chip">Promotional Assets</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🖥️</div>
+        <div class="skill-title">Digital & UI</div>
+        <div class="skill-list">
+          <span class="chip">Landing Page UI</span><span class="chip">Website Design</span><span class="chip">WordPress</span><span class="chip">Figma Prototyping</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🛠️</div>
+        <div class="skill-title">Design Tools</div>
+        <div class="skill-list">
+          <span class="chip active">Adobe Photoshop</span><span class="chip active">Figma</span><span class="chip active">Affinity Designer</span><span class="chip active">Affinity Photo</span><span class="chip">Canva</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🤝</div>
+        <div class="skill-title">Soft Skills</div>
+        <div class="skill-list">
+          <span class="chip">Adaptability</span><span class="chip">Time Management</span><span class="chip">Remote Work</span><span class="chip">Team Collaboration</span><span class="chip">Flexibility</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">Certifications</div>
+      <h2 class="section-title">Continuous <em>Learning</em></h2>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card reveal">
+        <div class="cert-issuer">Rubrik Grafis</div>
+        <div class="cert-name">Mastering Affinity Photo</div>
+        <div class="cert-date">October 2022</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-issuer">RevoU Mini Course</div>
+        <div class="cert-name">Intro to Digital Marketing</div>
+        <div class="cert-date">December 2022</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-issuer">BuildWithAngga</div>
+        <div class="cert-name">Basic Web Designer</div>
+        <div class="cert-date">December 2019</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-band reveal">
+      <div class="section-label" style="justify-content:center;display:flex;margin-bottom:var(--space-4)">Get In Touch</div>
+      <h2 class="section-title">Let's work <em>together</em></h2>
+      <p>Open for freelance projects, full-time roles, and creative collaborations. Let's create something great.</p>
+      <div class="contact-links">
+        <a href="mailto:mhdputerapmgks@gmail.com" class="contact-link">✉ mhdputerapmgks@gmail.com</a>
+        <a href="https://wa.me/6285174436620" class="contact-link" target="_blank">📱 +62 851-7443-6620</a>
+        <a href="https://linkedin.com/in/mhdputerapmgks" class="contact-link" target="_blank">in mhdputerapmgks</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 M Putera Pamungkas</span>
+  <span>Graphic Designer · Bandung, Indonesia</span>
+</footer>
+
+<!-- ─── PROJECT MODALS ─────────────────────────────── -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOutside(event)">
+  <div class="modal" id="modal-content">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+const projects = {
+  tetanggaku: {
+    tag: "Brand Identity · Social Media",
+    title: "Tetanggaku",
+    client: "Sabi Solution Agency", role: "Lead Visual Designer", year: "2022–2023",
+    overview: "Tetanggaku is a local on-demand service startup with a 0% commission model for drivers — a concept built on fairness and community. The brand needed a visual identity that communicated trust, warmth, and accessibility from the ground up.",
+    process: "The project began with a brand discovery session to identify the core values: community, reliability, and fairness. From these values, I developed a visual direction that balanced approachability with professionalism — using friendly shapes, a community-inspired color palette, and clean typography.",
+    deliverables: [
+      "Brand Identity System — logo usage rules, clear space, do's and don'ts",
+      "Logo Philosophy — articulating the meaning behind the visual mark (collaboration & trust)",
+      "Typography System — primary and secondary typefaces with usage guidance",
+      "Color Palette — primary, secondary, and neutral swatches with accessibility checks",
+      "Social Media Asset Templates — feed posts, stories, and campaign headers"
+    ]
+  },
+  sparkblossom: {
+    tag: "Brand Identity",
+    title: "Spark Blossom",
+    client: "Sabi Solution Agency", role: "Brand & Visual Designer", year: "2022–2023",
+    overview: "Spark Blossom is an online K-Pop merchandise shop targeting a young, passionate, and trend-driven audience. The brand needed a visual identity that felt energetic, playful, and memorable — capturing the excitement of K-Pop fandom culture.",
+    process: "I created a brand identity system designed to resonate with the youthful K-Pop audience: vibrant colors, expressive typography, and a logo that feels dynamic and contemporary. The social media content system was built for high engagement and visual consistency across all platforms.",
+    deliverables: [
+      "Logo Design — primary logo and alternate lockups for different formats",
+      "Brand Guideline — visual rules for colors, fonts, and logo usage",
+      "Social Media Content System — templates for feed posts, stories, and promotions",
+      "Color Palette — vibrant, energetic palette tailored to K-Pop aesthetic"
+    ]
+  },
+  gordonmax: {
+    tag: "Social Media · UI Design",
+    title: "Gordon Max",
+    client: "Gordon Max & Fims", role: "Graphic Designer", year: "2020–2025",
+    overview: "Gordon Max is a premier diamond jewelry retailer based in Jakarta. The brand's premium positioning required a digital presence that felt refined, luxurious, and trustworthy — without being cold or unapproachable.",
+    process: "The design direction centered on elegance and sophistication. I used a restrained color palette, clean compositions, and high-quality typography to ensure every touchpoint felt premium. For the website UI, the focus was on a seamless, gallery-like browsing experience that showcased the products with the respect they deserved.",
+    deliverables: [
+      "Social Media Content — sophisticated feed posts and promotional visuals",
+      "Promotional Marketing Materials — campaign banners and product announcements",
+      "Website UI Design — landing page and product page UI optimized for a luxury experience",
+      "Before/After Showcase — visual comparison of redesigned digital presence"
+    ]
+  },
+  mcdonat: {
+    tag: "Social Media Design",
+    title: "McDonat",
+    client: "McDonat (Local Brand)", role: "Graphic Designer", year: "2020–2025",
+    overview: "McDonat is a Bandung-based donut brand known for its classic flavors. The brand wanted to revitalize its social media presence — moving from a generic look to a vibrant, appetite-stimulating visual identity that drives engagement and purchase intent.",
+    process: "I developed a bold, playful visual direction using high-energy colors, dynamic layouts, and fun typography. The goal was to create content that makes the product irresistible — content that stops the scroll and triggers an immediate craving.",
+    deliverables: [
+      "Social Media Feed Design — cohesive, bold visual theme across feed posts",
+      "Promotional Campaign Visuals — monthly promotions and seasonal content",
+      "Art Direction — defining the brand's playful and vibrant visual personality",
+      "Content Templates — reusable templates for the brand's in-house team"
+    ]
+  },
+  berlanja: {
+    tag: "Marketing Design",
+    title: "Berlanja",
+    client: "Berlanja Retail Brand", role: "Graphic Designer", year: "2020–2025",
+    overview: "Berlanja is a retail brand specializing in herbal health products and fashion. As Graphic Designer, I was responsible for building a comprehensive visual presence that strengthened brand recognition and drove measurable sales results.",
+    process: "The design approach balanced the health-focused and fashion dimensions of the brand — creating a clean, trustworthy aesthetic for health products while maintaining energy and style for the fashion line. Marketing kits were designed to be versatile and adaptable across multiple formats.",
+    deliverables: [
+      "Marketing Kit — comprehensive set of branded design assets for offline and online use",
+      "Social Media Content — regular feed posts, stories, and promotional graphics",
+      "Banner Design — promotional banners for digital and print campaigns",
+      "Brand Application — ensuring visual consistency across all brand touchpoints"
+    ]
+  },
+  erlyssa: {
+    tag: "Social Media · E-Commerce",
+    title: "Erlyssa",
+    client: "Erlyssa Fashion Brand", role: "Graphic Designer", year: "2020–2025",
+    overview: "Erlyssa is a fashion brand specializing in premium scarves and modest wear for the Indonesian market. The challenge was to create content that felt both aspirational and accessible — aesthetic enough to attract a premium audience while driving real conversions on marketplaces.",
+    process: "I developed an elegant, editorial visual style that aligned with the brand's premium positioning. For e-commerce platforms, I focused on product-first layouts that maximize visibility and conversion — clean backgrounds, strong product photography framing, and clear promotional hierarchy.",
+    deliverables: [
+      "Social Media Content — aesthetic feed posts aligned with premium brand identity",
+      "E-Commerce Visuals — high-converting product images optimized for marketplace platforms",
+      "Promotional Assets — campaign banners and sale promotion graphics",
+      "Visual Brand Consistency — ensuring a unified look across Instagram and marketplace stores"
+    ]
+  },
+  beautetox: {
+    tag: "E-Commerce · Shopee",
+    title: "Beautetox",
+    client: "Beautetox Beauty Brand", role: "Graphic Designer", year: "2020–2025",
+    overview: "Beautetox is a beauty brand focused on the Indonesian e-commerce market, primarily Shopee. The project focused on optimizing the brand's digital shelf — creating product displays and store decoration that attract attention, build credibility, and convert browsers into buyers.",
+    process: "I conducted a thorough audit of the brand's existing Shopee presence and identified key improvement areas: product display quality, store layout, and promotional banner clarity. The redesigned assets prioritized strong visual hierarchy, clear product benefits, and an inviting storefront experience.",
+    deliverables: [
+      "Product Display Images — high-quality, benefit-focused product photos and mockups",
+      "Shopee Store Decoration — full store decoration layout for better UX and brand impression",
+      "Promotional Banner Set — discount announcements, flash sale graphics, and featured product banners",
+      "Visual Merchandising — strategic visual layout to improve click-through and conversion rates"
+    ]
+  }
+};
+
+function openModal(key) {
+  const p = projects[key];
+  if (!p) return;
+  const deliverableItems = p.deliverables.map(d => `<li>${d}</li>`).join('');
+  document.getElementById('modal-body').innerHTML = `
+    <div class="modal-tag">${p.tag}</div>
+    <h2 class="modal-title">${p.title}</h2>
+    <div class="modal-meta-row">
+      <div class="modal-meta-item"><label>Client</label><span>${p.client}</span></div>
+      <div class="modal-meta-item"><label>Role</label><span>${p.role}</span></div>
+      <div class="modal-meta-item"><label>Year</label><span>${p.year}</span></div>
+    </div>
+    <div class="modal-img-placeholder">[ Visual Showcase Area — insert mockup/screenshots here ]</div>
+    <div class="modal-divider"></div>
+    <div class="modal-section-h">Project Overview</div>
+    <p>${p.overview}</p>
+    <div class="modal-section-h">Design Process</div>
+    <p>${p.process}</p>
+    <div class="modal-section-h">Key Deliverables</div>
+    <ul class="modal-deliverables">${deliverableItems}</ul>
+  `;
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
